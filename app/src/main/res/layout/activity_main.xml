@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="133dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logo_dns" />
+
+            <TextView
+                android:id="@+id/textViewProcessor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Процессор"
+                android:textSize="@dimen/header_size"/>
+
+            <RadioGroup
+                android:id="@+id/rgProcessor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbProcessor1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Intel i7-9700k"
+                    android:textSize="@dimen/text_size"/>
+
+                <RadioButton
+                    android:id="@+id/rbProcessor2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="AMD Ryzen 7 5800x"
+                    android:textSize="@dimen/text_size"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textViewVideocard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Видеокарта"
+                android:textSize="@dimen/header_size"/>
+
+            <RadioGroup
+                android:id="@+id/rgVideocard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbVideocard1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="GTX 1050ti"
+                    android:textSize="@dimen/text_size"/>
+
+                <RadioButton
+                    android:id="@+id/rbVideocard2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="RTX 3050"
+                    android:textSize="@dimen/text_size"/>
+
+                <RadioButton
+                    android:id="@+id/rbVideocard3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="RTX 3080ti"
+                    android:textSize="@dimen/text_size"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textViewMotherboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Материнская плата: "
+                android:textSize="@dimen/header_size"/>
+
+            <RadioGroup
+                android:id="@+id/rgMotherboard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbMotherboard1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="MSI B450M"
+                    android:textSize="@dimen/text_size"/>
+
+                <RadioButton
+                    android:id="@+id/rbMotherboard2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ASRock H310CM"
+                    android:textSize="@dimen/text_size"/>
+
+                <RadioButton
+                    android:id="@+id/rbMotherboard3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="GIGABYTE B450M"
+                    android:textSize="@dimen/text_size"/>
+            </RadioGroup>
+
+            <CheckBox
+                android:id="@+id/cbWindows"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Лицензионный Windows"
+                android:textSize="@dimen/text_size"/>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Оформить заказ"
+                android:onClick="makeOrder"
+                android:textSize="@dimen/text_size"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
