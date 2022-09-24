@@ -6,98 +6,107 @@
     android:layout_height="match_parent"
     tools:context=".OrderActivity">
 
-    <TextView
-        android:id="@+id/orderConfirmed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ваш заказ принят и уже готовится к отправке!"
-        android:textSize="@dimen/text_size"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/processorLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Процессор"
-        android:textSize="@dimen/text_size"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/orderConfirmed" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/processor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/processorLabel" />
+            <TextView
+                android:id="@+id/orderConfirmed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ваш заказ принят и уже готовится к отправке!"
+                android:textSize="@dimen/text_size" />
 
-    <TextView
-        android:id="@+id/videocardLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Видеокарта"
-        android:textSize="@dimen/text_size"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/processor" />
+            <TextView
+                android:id="@+id/processorLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Процессор"
+                android:textSize="@dimen/text_size" />
 
-    <TextView
-        android:id="@+id/videocard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/videocardLabel" />
+            <TextView
+                android:id="@+id/processor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="@dimen/text_size" />
 
-    <TextView
-        android:id="@+id/motherboardLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Материнская плата"
-        android:textSize="@dimen/text_size"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/videocard" />
+            <TextView
+                android:id="@+id/videocardLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Видеокарта"
+                android:textSize="@dimen/text_size" />
 
-    <TextView
-        android:id="@+id/motherboard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/motherboardLabel" />
+            <TextView
+                android:id="@+id/videocard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="@dimen/text_size" />
 
-    <TextView
-        android:id="@+id/windowsLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Windows"
-        android:textSize="@dimen/text_size"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/motherboard" />
+            <TextView
+                android:id="@+id/motherboardLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Материнская плата"
+                android:textSize="@dimen/text_size" />
 
-    <TextView
-        android:id="@+id/windows"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/windowsLabel" />
+            <TextView
+                android:id="@+id/motherboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="@dimen/text_size" />
 
-    <TextView
-        android:id="@+id/totalPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/windows" />
+            <TextView
+                android:id="@+id/windowsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Windows"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/windows"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/dateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Дата заказа"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="@dimen/text_size" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="getOrders"
+                android:text="Список заказов"
+                android:textSize="@dimen/text_size" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

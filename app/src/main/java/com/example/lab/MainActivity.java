@@ -3,6 +3,7 @@ package com.example.lab;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -14,6 +15,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         Order order = new Order();
         try {
             String processor, videocard, motherboard;
-            boolean windows;
+            int windows;
 
             processor = getStrFromRb(R.id.rgProcessor);
             videocard = getStrFromRb(R.id.rgVideocard);
@@ -57,8 +61,21 @@ public class MainActivity extends AppCompatActivity {
             order.setMotherboard(motherboard);
 
             CheckBox cbWindows = findViewById(R.id.cbWindows);
-            if (cbWindows.isChecked()) order.setWindows(true);
-            else order.setWindows(false);
+            if (cbWindows.isChecked()) {
+                order.setWindows(true);
+                windows = 1;
+            }
+            else {
+                order.setWindows(false);
+                windows = 0;
+            }
+
+            Date currentTime = Calendar.getInstance().getTime();
+            order.setOrderDate(currentTime);
+
+            SQLiteDatabase db = getBaseContext().openOrCreateDatabase("orders.db", MODE_PRIVATE, null);
+            db.execSQL("CREATE TABLE IF NOT EXISTS orders (id INTEGER PRIMARY KEY AUTOINCREMENT, processor TEXT, videocard TEXT, motherboard TEXT, windows INTEGER, date TEXT)");
+            db.execSQL("INSERT INTO orders (processor, videocard, motherboard, windows, date) VALUES ('" + order.getProcessor() + "','" + order.getVideocard() + "','" + order.getMotherboard() + "'," + windows + ",'" + order.getOrderDate().toString() + "');");
 
             Intent intent = new Intent(this, OrderActivity.class);
             intent.putExtra(Order.class.getSimpleName(), order);

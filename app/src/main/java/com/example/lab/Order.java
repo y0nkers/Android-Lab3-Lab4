@@ -1,16 +1,20 @@
 package com.example.lab;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Order implements Serializable {
     private String processor_, videocard_, motherboard_;
     private boolean windows_;
+    Date date_;
 
-    public Order(String processor, String videocard, String motherboard, boolean windows) {
+    public Order(String processor, String videocard, String motherboard, boolean windows, Date orderDate) {
         processor_ = processor;
         videocard_ = videocard;
         motherboard_ = motherboard;
         windows_ = windows;
+        date_ = orderDate;
     }
 
     public Order() {
@@ -18,6 +22,7 @@ public class Order implements Serializable {
         videocard_ = "DEFAULT";
         motherboard_ = "DEFAULT";
         windows_ = false;
+        date_ = Calendar.getInstance().getTime();
     }
     
     public String getProcessor() {
@@ -52,13 +57,18 @@ public class Order implements Serializable {
         this.windows_ = windows;
     }
 
+    public void setOrderDate(Date orderDate) { date_ = orderDate;}
+
+    public Date getOrderDate() { return date_; }
+
     @Override
     public String toString() {
         return "Order{" +
-                "processor=" + processor_ +
-                ", videocard=" + videocard_ +
-                ", motherboard=" + motherboard_ +
-                ", windows=" + windows_ +
+                "processor_='" + processor_ + '\'' +
+                ", videocard_='" + videocard_ + '\'' +
+                ", motherboard_='" + motherboard_ + '\'' +
+                ", windows_=" + windows_ +
+                ", date_=" + date_ +
                 '}';
     }
 }
