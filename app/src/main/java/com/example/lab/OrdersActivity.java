@@ -23,10 +23,11 @@ public class OrdersActivity extends AppCompatActivity {
             String videocard = query.getString(2);
             String motherboard = query.getString(3);
             String windows = query.getInt(4) == 1 ? "Установлена" : "Не установлена";
-            String date = query.getString(5);
+            String price = Integer.toString(query.getInt(5));
+            String date = query.getString(6);
             String order = "Заказ №" + id + "\nПроцессор: " + processor + "\nВидеокарта: "
                     + videocard + "\nМатеринская плата: " + motherboard + "\nWindows: " + windows
-                    + "\nДата заказа: " + date + "\n\n";
+                    + "\nСтоимость заказа: " + price + " руб." + "\nДата заказа: " + date + "\n\n";
             orders.append(order);
         }
     }

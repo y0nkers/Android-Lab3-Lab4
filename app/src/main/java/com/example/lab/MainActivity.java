@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     public void makeOrder(View view) {
         Order order = new Order();
         try {
+            // Setting order
             String processor, videocard, motherboard;
             int windows;
 
@@ -70,12 +71,52 @@ public class MainActivity extends AppCompatActivity {
                 windows = 0;
             }
 
+            // Setting order price
+            switch (processor) {
+                case "Intel i7-9700k":
+                    order.setProcessorPrice(15000);
+                    break;
+                case "AMD Ryzen 7 5800x":
+                    order.setProcessorPrice(12000);
+                    break;
+            }
+
+            switch(videocard) {
+                case "GTX 1050ti":
+                    order.setVideocardPrice(10000);
+                    break;
+                case "RTX 3050":
+                    order.setVideocardPrice(25000);
+                    break;
+                case "RTX 3080ti":
+                    order.setVideocardPrice(30000);
+                    break;
+            }
+
+            switch(motherboard) {
+                case "MSI B450M":
+                    order.setMotherboardPrice(7000);
+                    break;
+                case "ASRock H310CM":
+                    order.setMotherboardPrice(5000);
+                    break;
+                case "GIGABYTE B450M":
+                    order.setMotherboardPrice(6000);
+                    break;
+            }
+
+            if (windows == 1) order.setWindowsPrice(10000);
+            else order.setWindowsPrice(0);
+
+            int totalPrice = order.getProcessorPrice() + order.getVideocardPrice() + order.getMotherboardPrice() + order.getWindowsPrice();
+
             Date currentTime = Calendar.getInstance().getTime();
             order.setOrderDate(currentTime);
 
+            // Upload order in database
             SQLiteDatabase db = getBaseContext().openOrCreateDatabase("orders.db", MODE_PRIVATE, null);
-            db.execSQL("CREATE TABLE IF NOT EXISTS orders (id INTEGER PRIMARY KEY AUTOINCREMENT, processor TEXT, videocard TEXT, motherboard TEXT, windows INTEGER, date TEXT)");
-            db.execSQL("INSERT INTO orders (processor, videocard, motherboard, windows, date) VALUES ('" + order.getProcessor() + "','" + order.getVideocard() + "','" + order.getMotherboard() + "'," + windows + ",'" + order.getOrderDate().toString() + "');");
+            db.execSQL("CREATE TABLE IF NOT EXISTS orders (id INTEGER PRIMARY KEY AUTOINCREMENT, processor TEXT, videocard TEXT, motherboard TEXT, windows INTEGER, price INTEGER, date TEXT)");
+            db.execSQL("INSERT INTO orders (processor, videocard, motherboard, windows, price, date) VALUES ('" + order.getProcessor() + "','" + order.getVideocard() + "','" + order.getMotherboard() + "'," + windows + "," + totalPrice + ",'" + order.getOrderDate().toString() + "');");
 
             Intent intent = new Intent(this, OrderActivity.class);
             intent.putExtra(Order.class.getSimpleName(), order);

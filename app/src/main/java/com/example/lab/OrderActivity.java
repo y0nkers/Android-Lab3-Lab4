@@ -21,29 +21,23 @@ public class OrderActivity extends AppCompatActivity {
         if (arguments != null) {
             order = (Order)arguments.getSerializable(Order.class.getSimpleName());
 
-            String processor, videocard, motherboard;
-            boolean windows;
-            processor = order.getProcessor();
-            videocard = order.getVideocard();
-            motherboard = order.getMotherboard();
-            windows = order.isWindows();
-            Date date = order.getOrderDate();
-
             TextView tvProcessor = (TextView)findViewById(R.id.processor);
             TextView tvVideocard = (TextView)findViewById(R.id.videocard);
             TextView tvMotherboard = (TextView)findViewById(R.id.motherboard);
             TextView tvWindows = (TextView)findViewById(R.id.windows);
             TextView tvDate = (TextView)findViewById(R.id.date);
 
-            tvProcessor.setText(processor);
-            tvVideocard.setText(videocard);
-            tvMotherboard.setText(motherboard);
+            tvProcessor.setText(order.getProcessor() + " (" + order.getProcessorPrice() + " руб.)");
+            tvVideocard.setText(order.getVideocard() + " (" + order.getVideocardPrice() + " руб.)");
+            tvMotherboard.setText(order.getMotherboard() + " (" + order.getMotherboardPrice() + " руб.)");
 
+            if (order.isWindows()) tvWindows.setText("Установлена (" + order.getWindowsPrice() + " руб.)" );
+            else tvWindows.setText("Не установлена (0 руб.)");
 
-            if (windows) tvWindows.setText("Windows 10 установлена.");
-            else tvWindows.setText("ОС не установлена.");
+            TextView totalPrice = (TextView)findViewById(R.id.totalPrice);
+            totalPrice.setText("Общая стоимость заказа: " + (order.getProcessorPrice() + order.getVideocardPrice() + order.getMotherboardPrice() + order.getWindowsPrice()) + " руб.");
 
-            tvDate.setText(date.toString());
+            tvDate.setText(order.getOrderDate().toString());
         }
     }
 
